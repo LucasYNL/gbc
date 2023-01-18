@@ -4,8 +4,9 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
         <meta name="viewport" content="width=device-width, initial-scale = 1.0">
-        <link rel="stylesheet" href="../styles/style.css">
-        <script src="../scripts/script.js" defer></script>
+        <link rel="stylesheet" href="../styles/main.css">
+        <link rel="stylesheet" href="../styles/game.css">
+        <script src="../scripts/signUp.js" defer></script>
         <title>RBC</title>
     </head>
 
@@ -20,45 +21,142 @@
                     <li> <a href="contact.html">CONTACT</a></li>
                 </ul>
             </nav>
-            <div class="title">
-                <div>
-                    <img src="../images/logo.png" id="logo">
-                    <h1>Richmond<br>Badminton Club</h1>
-                </div>
-                <h3>Come Join our Games !</h3>
-                <button type="button">Join Games</button>
-            </div>
         </header>
 
         <main>
+            <h1>Please read the terms and conditions<br>if you have not before joining.</h1>
+            <h1>WEEK TIME IDK HOW TO DO YET</h1>
             <div class="gameDays">
-                <div class="tues">
-                    <h3>Tuesday</h3>
-                    <h4>Doubles Night</h4>
-                    <h4>ClearOne Badminton<br>(No.3 Road)</h4>
-                    <h4>7:50pm - 11:00pm</h4>
-                    <button type="button" class="gamebtn">Sign Up</button>
+                <div class="games">
+                    <h2>Stage18 Badminton</h2>
+                    <h4>Jim<br><br>Thursday<br>6:00pm - 8:00pm</h4>
+                    <ol id="sbthur">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ol>
+                    <button type="button" class="join" onclick="createPlayer(0)">Join</button>
                 </div>
-                <div class="thurs">
-                    <h3>Thursday</h3>
-                    <h4>Mixed Double Night</h4>
-                    <h4>ACE Badminton</h4>
-                    <h4>7:50pm - 11:00pm</h4>
-                    <button type="button" class="gamebtn">Sign Up</button>
+                <div class="games">
+                    <h2>Stage18 Badminton</h2>
+                    <h4>Jim<br><br>Saturday<br>8:00am - 10:00am</h4>
+                    <ol id="sbsat">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ol>
+                    <button type="button" class="join" onclick="createPlayer(1)">Join</button>
                 </div> 
-                <div class="satur">
-                    <h3>Saturday</h3>
-                    <h4>Challenge & Social Night</h4>
-                    <h4>DRIVE Badminton</h4>
-                    <h4>7:50pm - 11:00pm</h4>
-                    <button type="button" class="gamebtn">Sign Up</button>
+                <div class="games">
+                    <h2>Stage18 Badminton</h2>
+                    <h4>Jim<br><br>Sunday<br>8:00pm - 10:00pm</h4>
+                    <ol id="sbsun">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ol>
+                    <button type="button" class="join" onclick="createPlayer(2)">Join</button>
                 </div> 
-                <div class="sun">
-                    <h3>Sunday</h3>
-                    <h4>Singles & Doubles Night</h4>
-                    <h4>DRIVE Badminton</h4>
-                    <h4>7:50pm - 10:15pm</h4>
-                    <button type="button" class="gamebtn">Sign Up</button>
+                <div class="games">
+                    <h2>Drive Badminton</h2>
+                    <h4>Vanessa<br><br>Thursday<br>10:00am - 12:00pm</h4>
+                    <ol id="dbthur">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ol>
+                    <button type="button" class="join" onclick="createPlayer(3)">Join</button>
+                </div>
+                <div class="games">
+                    <h2>Drive Badminton</h2>
+                    <h4>Vanessa<br><br>Friday<br>10:00am - 12:00pm</h4>
+                    <ol id="dbfri">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ol>
+                    <button type="button" class="join" onclick="createPlayer(4)">Join</button>
                 </div>
             </div>
         </main>
