@@ -1,2 +1,2 @@
-# gbc
-Website for George Badminton Club
+# rbc
+Website for Richmond Badminton Club
