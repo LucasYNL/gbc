@@ -1,0 +1,63 @@
+main h1{
+    font-size: 20px;
+    text-align: center;
+    color: red;
+    border: 1px solid #202020;
+    background-color: #202020;
+    border-radius: 15px;
+    padding: 5px;
+    width: 500px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.gameDays{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 30px;
+    width: 1200px;
+    margin-top: 30px;
+}
+
+.games{
+    background-color: #202020;
+    color: #ffffff;
+    border-radius: 15px;
+    text-align: center;
+    border: 3px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+}
+
+ol{
+    display: flex;
+    flex-direction: column;
+    width: 140px;
+}
+
+ol li{
+    text-align: left;
+    height: 25px;
+}
+
+ol li button{
+    color: grey;
+    width: 25px;
+    background: none;
+    margin-left: 10px;
+    border: 1px solid grey;
+    border-radius: 15px;
+}
+
+.join{
+    border-radius: 15px;
+    margin-bottom: 15px;
+    width: 70px;
+    height: 30px;
+    font-size: 15px;
+    font-weight: 600;
+    border: 2px solid black;
+}
