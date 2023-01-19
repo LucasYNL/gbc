@@ -125,6 +125,7 @@ main h1 {
     border-radius: 15px;
     background-color: rgba(230, 230, 230, 30);
     padding: 8px;
+    text-align：center；
 }
 
 main p {
