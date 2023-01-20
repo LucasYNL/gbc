@@ -12,19 +12,40 @@ function player(name, pass, num){
     this.list = num;
 }
 
+///////////////////////////// Sign Up Form ////////////////
+
+const form = document.querySelector(".formWrap");
+form.style.display = "none"; // sets form to hidden onload
+
+function closeForm() {
+    form.style.display = "none";
+}
+
 /* 
 Create oject and push to appropriate array
 Each button will push in a data (num) that is associated with the ordered list that it's for
 */
-function createPlayer(num){
-    let title = prompt("Enter player name");
-    let passw = prompt("Enter a pin (Used for Cancellation)")
-    let list = num;
-    const person = new player(title, passw, list);
-
-    update(person);
+function createPlayer(num) {
+    form.style.display = "";
+    const list = document.getElementById("getListNum");
+    list.value = num;
 }
 
+form.addEventListener("submit", (event) => {
+    const name = form.elements["playerName"];
+    const passw = form.elements["pin"];
+    const listNum = form.elements["listNum"];
+
+    let playerName = name.value;
+    let pin = passw.value;
+    let list = listNum.value;
+
+    const person = new player(playerName, pin, list);
+    update(person);
+    confirm("Registered");
+
+    event.preventDefault();
+});
 
 /* 
 List for which signup sheet to add.
@@ -105,23 +126,23 @@ const dfri = document.getElementById("dbfri");
 
 // Uses info and changes specific ol's li innerHTML to players name.
 function print(player, i){
-    if(player.list === 0){
+    if(player.list == 0){
         const lists = sthur.getElementsByTagName("li");
         lists[i].innerHTML = player.playerName;
         lists[i].appendChild(createBtn(i, player.list));
-    }else if(player.list === 1){
+    }else if(player.list == 1){
         const lists = ssat.getElementsByTagName("li");
         lists[i].innerHTML = player.playerName;
         lists[i].appendChild(createBtn(i, player.list));
-    }else if(player.list === 2){
+    }else if(player.list == 2){
         const lists = ssun.getElementsByTagName("li");
         lists[i].innerHTML = player.playerName;
         lists[i].appendChild(createBtn(i, player.list));
-    }else if(player.list === 3){
+    }else if(player.list == 3){
         const lists = dthur.getElementsByTagName("li");
         lists[i].innerHTML = player.playerName;
         lists[i].appendChild(createBtn(i, player.list));
-    }else if(player.list === 4){
+    }else if(player.list == 4){
         const lists = dfri.getElementsByTagName("li");
         lists[i].innerHTML = player.playerName; 
         lists[i].appendChild(createBtn(i, player.list));
@@ -194,34 +215,9 @@ function remove(list, i){
 }
 
 function wrongPin(){
-    alert("Wrong Pin");
+    confirm("Wrong Pin");
 }
 
 function correctPin(){
-    alert("Successfully Cancelled")
+    confirm("Successfully Cancelled");
 }
-
-///////////////////////////// Sign Up Form ////////////////
-
-const form = document.getElementById("signUpForm");
-
-function openForm(){
-    form.style.display = "";
-}
-
-function closeForm(){
-    form.style.display = "none";
-}
-
-form.addEventListener("submit", (event) =>{
-    const name = form.elements["playerName"];
-    const passw = form.elements["pin"];
-
-    let playerName = name.value;
-    let pin = passw.value;
-
-    console.log(playerName);
-    console.log(pin);
-
-    event.preventDefault();
-});

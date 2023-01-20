@@ -79,7 +79,7 @@ ol li button {
     margin-top: 30px;
 }
 
-.formWrap{
+.formWrap {
     display: flex;
     flex-direction: column;
     border: 1px solid #202020;
