@@ -200,3 +200,28 @@ function wrongPin(){
 function correctPin(){
     alert("Successfully Cancelled")
 }
+
+///////////////////////////// Sign Up Form ////////////////
+
+const form = document.getElementById("signUpForm");
+
+function openForm(){
+    form.style.display = "";
+}
+
+function closeForm(){
+    form.style.display = "none";
+}
+
+form.addEventListener("submit", (event) =>{
+    const name = form.elements["playerName"];
+    const passw = form.elements["pin"];
+
+    let playerName = name.value;
+    let pin = passw.value;
+
+    console.log(playerName);
+    console.log(pin);
+
+    event.preventDefault();
+});
