@@ -113,7 +113,7 @@ function createBtn(index, listNum) {
     btn.setAttribute("index", index);
     btn.setAttribute("list", listNum);
 
-    btn.addEventListener("pointerdown", (event) => {
+    btn.addEventListener("click", (event) => {
         console.log("btn eventlistener called, append btn attribute value to hidden cancel form inputs") //
         console.log("cancel form display to '', body overflow to hidden") //
         prepCancelForm(btn.getAttribute("list"), btn.getAttribute("index"));
