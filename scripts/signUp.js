@@ -102,7 +102,7 @@ function createBtn(index, listNum){
     btn.setAttribute("list", listNum);
 
     btn.addEventListener("touchstart", (event) => {
-        console.log(event);
+        removePlayer(btn.getAttribute("list"), btn.getAttribute("index"));
     });
     btn.addEventListener("click", (event) => {
         removePlayer(btn.getAttribute("list"), btn.getAttribute("index"));
