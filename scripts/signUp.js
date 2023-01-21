@@ -88,7 +88,6 @@ cancelForm.addEventListener("submit", (event) => {
 function removePlayer(list, i) {
     cancelForm.style.display = "";
     body.style.overflow = "hidden";
-    console.log("clicked");
 
     const cList = document.getElementById("getCancelList");
     const cIndex = document.getElementById("getIndex");
@@ -101,7 +100,11 @@ function createBtn(index, listNum){
     const btn = document.createElement("button");
     btn.setAttribute("index", index);
     btn.setAttribute("list", listNum);
-    btn.addEventListener("click", function () {
+
+    btn.addEventListener("touchstart", (event) => {
+        console.log(event);
+    });
+    btn.addEventListener("click", (event) => {
         removePlayer(btn.getAttribute("list"), btn.getAttribute("index"));
     });
 
