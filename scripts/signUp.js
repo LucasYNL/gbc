@@ -101,11 +101,24 @@ function createBtn(index, listNum){
     btn.setAttribute("index", index);
     btn.setAttribute("list", listNum);
 
-    btn.addEventListener("touchstart", (event) => {
-        removePlayer(btn.getAttribute("list"), btn.getAttribute("index"));
-    });
-    btn.addEventListener("click", (event) => {
-        removePlayer(btn.getAttribute("list"), btn.getAttribute("index"));
+    btn.addEventListener("pointerdown", (event) => {
+        switch (event.pointerType) {
+            case "mouse":
+                console.log("Mouse Event");
+                btn.addEventListener("click", (event) => {
+                    removePlayer(btn.getAttribute("list"), btn.getAttribute("index"));
+                });
+                break;
+            case "touch":
+                console.log("Touch Event");
+                btn.addEventListener("touchstart", (event) => {
+                    removePlayer(btn.getAttribute("list"), btn.getAttribute("index"));
+                });
+                break;
+            default:
+                console.log("Not Supported");
+        }
+
     });
 
     const bNode = document.createTextNode("X");
@@ -204,6 +217,8 @@ form.addEventListener("submit", (event) => {
 
     const person = new player(playerName, pin, list);
     update(person);
+    name.value = "";
+    listNum.value = "";
     closeForm();
 });
 
