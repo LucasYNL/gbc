@@ -29,6 +29,87 @@ function closeForm() {
     body.style.overflow = "";
 }
 
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~ Cancel Button Section ~~~~~~~~~~~~~~~~~~~~~~ */
+
+// sets form to invisible 
+const cancelForm = document.querySelector(".cancelWrap");
+cancelForm.style.display = "none";
+
+// remove function
+function remove(check, i, list) {
+    if (list == 0) {
+        if (sbThurList[i].password == check) {
+            const lists = sthur.getElementsByTagName("li");
+            sbThurList[i] = {};
+            lists[i].innerHTML = "";
+        }
+    } else if (list == 1) {
+        if (sbSatList[i].password == check) {
+            const lists = ssat.getElementsByTagName("li");
+            sbSatList[i] = {};
+            lists[i].innerHTML = "";
+        }
+    } else if (list == 2) {
+        if (sbSunList[i].password == check) {
+            const lists = ssun.getElementsByTagName("li");
+            sbSunList[i] = {};
+            lists[i].innerHTML = "";
+        }
+    } else if (list == 3) {
+        if (dbThurList[i].password == check) {
+            const lists = dthur.getElementsByTagName("li");
+            dbThurList[i] = {};
+            lists[i].innerHTML = "";
+        }
+    } else if (list == 4) {
+        if (dbFriList[i].password == check) {
+            const lists = dfri.getElementsByTagName("li");
+            dbFriList[i] = {};
+            lists[i].innerHTML = "";
+        }
+    }
+}
+
+// Cancel Form Submission
+cancelForm.addEventListener("submit", (event) => {
+    const cancelPin = cancelForm.elements["cPin"];
+    const index = cancelForm.elements["cancelIndex"];
+    const cList = cancelForm.elements["cancelList"];
+
+    let pin = cancelPin.value;
+    let i = index.value;
+    let list = cList.value;
+
+    remove(pin, i, list);
+    closeForm();
+});
+
+// Gets info for the cancel form
+function removePlayer(list, i) {
+    cancelForm.style.display = "";
+    body.style.overflow = "hidden";
+    console.log("clicked");
+
+    const cList = document.getElementById("getCancelList");
+    const cIndex = document.getElementById("getIndex");
+    cList.value = list;
+    cIndex.value = i;
+}
+
+// Creates cancellation button
+function createBtn(index, listNum){
+    const btn = document.createElement("button");
+    btn.setAttribute("index", index);
+    btn.setAttribute("list", listNum);
+    btn.addEventListener("click", function () {
+        removePlayer(btn.getAttribute("list"), btn.getAttribute("index"));
+    });
+
+    const bNode = document.createTextNode("X");
+    btn.appendChild(bNode);
+    return btn;
+}
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~ Create Player Section ~~~~~~~~~~~~~~~~~~~~~~ */
 
 // sets form to invisible
@@ -131,89 +212,3 @@ function createPlayer(num) {
     list.value = num;
 }
 
-
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~ Cancel Button Section ~~~~~~~~~~~~~~~~~~~~~~ */
-
-// sets form to invisible 
-const cancelForm = document.querySelector(".cancelWrap");
-cancelForm.style.display = "none";
-
-// remove function
-function remove(check, i, list) {
-    if (list == 0) {
-        if (sbThurList[i].password == check) {
-            const lists = sthur.getElementsByTagName("li");
-            sbThurList[i] = {};
-            lists[i].innerHTML = "";
-        }
-    } else if (list == 1) {
-        if (sbSatList[i].password == check) {
-            const lists = ssat.getElementsByTagName("li");
-            sbSatList[i] = {};
-            lists[i].innerHTML = "";
-        }
-    } else if (list == 2) {
-        if (sbSunList[i].password == check) {
-            const lists = ssun.getElementsByTagName("li");
-            sbSunList[i] = {};
-            lists[i].innerHTML = "";
-        }
-    } else if (list == 3) {
-        if (dbThurList[i].password == check) {
-            const lists = dthur.getElementsByTagName("li");
-            dbThurList[i] = {};
-            lists[i].innerHTML = "";
-        }
-    } else if (list == 4) {
-        if (dbFriList[i].password == check) {
-            const lists = dfri.getElementsByTagName("li");
-            dbFriList[i] = {};
-            lists[i].innerHTML = "";
-        }
-    }
-}
-
-// Cancel Form Submission
-cancelForm.addEventListener("submit", (event) => {
-    const cancelPin = cancelForm.elements["cPin"];
-    const index = cancelForm.elements["cancelIndex"];
-    const cList = cancelForm.elements["cancelList"];
-
-    let pin = cancelPin.value;
-    let i = index.value;
-    let list = cList.value;
-
-    remove(pin, i, list);
-    closeForm();
-});
-
-// Gets info for the cancel form
-function removePlayer(list, i) {
-    console.log("check");
-    cancelForm.style.display = "";
-    body.style.overflow = "hidden";
-
-    const cList = document.getElementById("getCancelList");
-    const cIndex = document.getElementById("getIndex");
-    cList.value = list;
-    cIndex.value = i;
-}
-
-// Creates cancellation button
-function createBtn(index, listNum){
-    const btn = document.createElement("button");
-    btn.setAttribute("index", index);
-    btn.setAttribute("list", listNum);
-    btn.addEventListener("click", function(){
-        removePlayer(btn.getAttribute("list"), btn.getAttribute("index"));
-    });
-
-    const bNode = document.createTextNode("X");
-    btn.appendChild(bNode);
-    return btn;
-}
-
-
-
-///// TO DO
-// CANCEL IS REFRESHING PAGE.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
