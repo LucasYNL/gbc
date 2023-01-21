@@ -23,17 +23,12 @@ function player(name, pass, num){
     this.list = num;
 }
 
-function closeForm() {
-    form.style.display = "none";
-    cancelForm.style.display = "none";
-    body.style.overflow = "";
-}
-
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~ Cancel Button Section ~~~~~~~~~~~~~~~~~~~~~~ */
-
 // sets form to invisible 
 const cancelForm = document.querySelector(".cancelWrap");
 cancelForm.style.display = "none";
+const form = document.querySelector(".formWrap");
+form.style.display = "none"; // sets form to hidden onload 
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~ Cancel Button Section ~~~~~~~~~~~~~~~~~~~~~~ */
 
 // remove function
 function remove(check, i, list) {
@@ -81,13 +76,12 @@ cancelForm.addEventListener("submit", (event) => {
     let list = cList.value;
 
     remove(pin, i, list);
-    closeForm();
+    cancelForm.style.display = "none";
+    body.style.overflow = "visible";
 });
 
 // Gets info for the cancel form
 function removePlayer(list, i) {
-    cancelForm.style.display = "";
-    body.style.overflow = "hidden";
 
     const cList = document.getElementById("getCancelList");
     const cIndex = document.getElementById("getIndex");
@@ -102,23 +96,9 @@ function createBtn(index, listNum){
     btn.setAttribute("list", listNum);
 
     btn.addEventListener("pointerdown", (event) => {
-        switch (event.pointerType) {
-            case "mouse":
-                console.log("Mouse Event");
-                btn.addEventListener("click", (event) => {
-                    removePlayer(btn.getAttribute("list"), btn.getAttribute("index"));
-                });
-                break;
-            case "touch":
-                console.log("Touch Event");
-                btn.addEventListener("touchstart", (event) => {
-                    removePlayer(btn.getAttribute("list"), btn.getAttribute("index"));
-                });
-                break;
-            default:
-                console.log("Not Supported");
-        }
-
+        removePlayer(btn.getAttribute("list"), btn.getAttribute("index"));
+        cancelForm.style.display = "";
+        body.style.overflow = "hidden";
     });
 
     const bNode = document.createTextNode("X");
@@ -126,11 +106,11 @@ function createBtn(index, listNum){
     return btn;
 }
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~ Create Player Section ~~~~~~~~~~~~~~~~~~~~~~ */
+function closeCancel() {
+    cancelForm.style.display = "none";
+}
 
-// sets form to invisible
-const form = document.querySelector(".formWrap");
-form.style.display = "none"; // sets form to hidden onload 
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~ Create Player Section ~~~~~~~~~~~~~~~~~~~~~~ */
 
 // Prints player name into html and creates cancel button
 function print(player, i) {
@@ -216,10 +196,11 @@ form.addEventListener("submit", (event) => {
     let list = listNum.value;
 
     const person = new player(playerName, pin, list);
+    form.style.display = "none";
+    cancelForm.style.display = "none";
+    body.style.overflow = "visible";
+
     update(person);
-    name.value = "";
-    listNum.value = "";
-    closeForm();
 });
 
 // gathers info for register form
@@ -230,3 +211,6 @@ function createPlayer(num) {
     list.value = num;
 }
 
+function closeSignUp() {
+    form.style.display = "none";
+}
