@@ -2,12 +2,11 @@
 
 <html>  
     <head lang="en">
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-        <meta name="viewport" content="width=device-width, initial-scale = 1, maximum-scale = 1">
+        <meta charset="utf-8" http-equiv="X-UA-Compatible" name="viewport" content="width=device-width, initial-scale = 1, maximum-scale = 1">
         <link rel="stylesheet" href="../styles/main.css">
         <link rel="stylesheet" href="../styles/game.css">
         <script src="../scripts/signUp.js" defer></script>
+        <script src="../scripts/fireBase.js" defer></script>
         <title>RBC</title>
     </head>
 
@@ -162,7 +161,7 @@
             </div>
 
             <div class="popUpForm">
-                <form class="formWrap" id="signUpForm" onsubmit="return false">
+                <form class="formWrap" action="../scripts/signUp.js" onsubmit="return false">
                     <div>
                         <h2>Sign Up</h2>
                     </div>
@@ -179,12 +178,12 @@
 
                     <div class="formbtn">
                         <button type="submit" class="btnSubmit">Sign Up</button>
-                        <button type="button" class="btnCancel" onclick="closeSignUp()">Close</button>
+                        <button type="button" class="btnCancel">Close</button>
                     </div>
                     <input type="hidden" id="getListNum" name="listNum" value="" />
                 </form>
 
-                <form class="cancelWrap" onsubmit="return false">
+                <form class="cancelWrap" action="../scripts/signUp.js" onsubmit="return false">
                     <div>
                         <h2>Cancellation</h2>
                     </div>
@@ -196,7 +195,7 @@
 
                     <div class="formbtn">
                         <button type="submit" class="btnSubmit">Cancel</button>
-                        <button type="button" class="btnCancel" onclick="closeCancel()">Close</button>
+                        <button type="button" class="btnCancel">Close</button>
                     </div>
                     <input type="hidden" id="getCancelList" name="cancelList" value="" />
                     <input type="hidden" id="getIndex" name="cancelIndex" value="" />

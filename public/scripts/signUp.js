@@ -1,77 +1,87 @@
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~ Database for each list ~~~~~~~~~~~~~~~~~~~~~~~~*/
 /* 
 List for which signup sheet to add.
-0 = Stage18 Thur / sbThurList
-1 = Stage18 Sat  / sbSatList
-2 = Stage18 Sun  / sbSunList
-3 = Drive Thur   / dbThurList
-4 = Drive Fri    / dbFriList
+0 = Stage18 Thur / storageZero
+1 = Stage18 Sat  / storageOne
+2 = Stage18 Sun  / storageTwo
+3 = Drive Thur   / storageThree
+4 = Drive Fri    / storageFour
 */
-let sbThurList = new Array(24).fill({});
-let sthur = document.getElementById("sbthur");
+let storageZero = new Array(24).fill({});
+let listZero = document.getElementById("sbthur");
 
-let sbSatList = new Array(12).fill({});
-let ssat = document.getElementById("sbsat");
+let storageOne = new Array(12).fill({});
+let listOne = document.getElementById("sbsat");
 
-let sbSunList = new Array(24).fill({});
-let ssun = document.getElementById("sbsun");
+let storageTwo = new Array(24).fill({});
+let listTwo = document.getElementById("sbsun");
 
-let dbThurList = new Array(18).fill({});
-let dthur = document.getElementById("dbthur");
+let storageThree = new Array(18).fill({});
 
-let dbFriList = new Array(18).fill({});
-let dfri = document.getElementById("dbfri");
+let listThree = document.getElementById("dbthur");
 
-const body = document.querySelector("#body");
+let storageFour = new Array(18).fill({});
+let listFour = document.getElementById("dbfri");
+
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Universal ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-/* Constructor */
+
+// Constructor
 function player(name, pass, num) {
-    console.log("object constructor called") // 
     this.playerName = name;
     this.password = pass;
     this.list = num;
 }
 
-// sets form to invisible 
-console.log("set both form display to none") //
+// Sets all form to invisible on click
+const cancelButtons = document.querySelectorAll(".btnCancel");
+cancelButtons.forEach((cancelButton) => {
+    cancelButton.addEventListener("click", event => {
+        signUpForm.style.display = "none";
+        cancelForm.style.display = "none";
+        body.style.overflow = "visible";
+    });
+});
+
+// Sets forms to invisible 
+const body = document.querySelector("#body"); // This is just here
 const cancelForm = document.querySelector(".cancelWrap");
+const signUpForm = document.querySelector(".formWrap");
 cancelForm.style.display = "none";
-const form = document.querySelector(".formWrap");
-form.style.display = "none"; 
+signUpForm.style.display = "none"; 
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~ Cancel Button Section ~~~~~~~~~~~~~~~~~~~~~~ */
 
 // remove function
 function remove(check, i, list) {
-    console.log("set selected array at index to {} empty, and html to '' empty") // 
     if (list == 0) {
-        if (sbThurList[i].password == check) {
-            const lists = sthur.getElementsByTagName("li");
-            sbThurList[i] = {};
+        if (storageZero[i].password == check) {
+            const lists = listZero.getElementsByTagName("li");
+            storageZero[i] = {};
             lists[i].innerHTML = "";
         }
     } else if (list == 1) {
-        if (sbSatList[i].password == check) {
-            const lists = ssat.getElementsByTagName("li");
-            sbSatList[i] = {};
+        if (storageOne[i].password == check) {
+            const lists = listOne.getElementsByTagName("li");
+            storageOne[i] = {};
             lists[i].innerHTML = "";
         }
     } else if (list == 2) {
-        if (sbSunList[i].password == check) {
-            const lists = ssun.getElementsByTagName("li");
-            sbSunList[i] = {};
+        if (storageTwo[i].password == check) {
+            const lists = listTwo.getElementsByTagName("li");
+            storageTwo[i] = {};
             lists[i].innerHTML = "";
         }
     } else if (list == 3) {
-        if (dbThurList[i].password == check) {
-            const lists = dthur.getElementsByTagName("li");
-            dbThurList[i] = {};
+        if (storageThree[i].password == check) {
+            const lists = listThree.getElementsByTagName("li");
+            storageThree[i] = {};
             lists[i].innerHTML = "";
         }
     } else if (list == 4) {
-        if (dbFriList[i].password == check) {
-            const lists = dfri.getElementsByTagName("li");
-            dbFriList[i] = {};
+        if (storageFour[i].password == check) {
+            const lists = listFour.getElementsByTagName("li");
+            storageFour[i] = {};
             lists[i].innerHTML = "";
         }
     }
@@ -79,7 +89,6 @@ function remove(check, i, list) {
 
 // Cancel Form Submission
 cancelForm.addEventListener("submit", (event) => {
-    console.log("cancelform submitted, acquire list id, index, and entered pin, call remove, cancelform display to none, body overflow to visible") // 
 
     const cancelPin = cancelForm.elements["cPin"];
     const index = cancelForm.elements["cancelIndex"];
@@ -108,14 +117,11 @@ function prepCancelForm(list, i) {
 
 // Creates cancellation button
 function createBtn(index, listNum) {
-    console.log("DOM btn created, create btn attribute for array id and index, create pointerdown event listener,  create textnode and append it, return btn") //
     const btn = document.createElement("button");
     btn.setAttribute("index", index);
     btn.setAttribute("list", listNum);
 
     btn.addEventListener("click", (event) => {
-        console.log("btn eventlistener called, append btn attribute value to hidden cancel form inputs") //
-        console.log("cancel form display to '', body overflow to hidden") //
         prepCancelForm(btn.getAttribute("list"), btn.getAttribute("index"));
     });
 
@@ -125,7 +131,6 @@ function createBtn(index, listNum) {
 }
 
 function closeCancel() {
-    console.log("cancel button pushed, cancel form display to none, body overflow to visible") // 
     cancelForm.style.display = "none";
     body.style.overflow = "visible";
 }
@@ -134,29 +139,28 @@ function closeCancel() {
 
 // Prints player name into html and creates cancel button
 function print(player, i) {
-    console.log("assert player name into html and append a delete button with player's index in array and array id as parameters") //
     if (player.list == 0) {
-        const lists = sthur.getElementsByTagName("li");
+        const lists = listZero.getElementsByTagName("li");
         lists[i].innerHTML = player.playerName;
         let cancelBTN = createBtn(i, player.list)
         lists[i].appendChild(cancelBTN);
     } else if (player.list == 1) {
-        const lists = ssat.getElementsByTagName("li");
+        const lists = listOne.getElementsByTagName("li");
         lists[i].innerHTML = player.playerName;
         let cancelBTN = createBtn(i, player.list)
         lists[i].appendChild(cancelBTN);
     } else if (player.list == 2) {
-        const lists = ssun.getElementsByTagName("li");
+        const lists = listTwo.getElementsByTagName("li");
         lists[i].innerHTML = player.playerName;
         let cancelBTN = createBtn(i, player.list)
         lists[i].appendChild(cancelBTN);
     } else if (player.list == 3) {
-        const lists = dthur.getElementsByTagName("li");
+        const lists = listThree.getElementsByTagName("li");
         lists[i].innerHTML = player.playerName;
         let cancelBTN = createBtn(i, player.list)
         lists[i].appendChild(cancelBTN);
     } else if (player.list == 4) {
-        const lists = dfri.getElementsByTagName("li");
+        const lists = listFour.getElementsByTagName("li");
         lists[i].innerHTML = player.playerName;
         let cancelBTN = createBtn(i, player.list)
         lists[i].appendChild(cancelBTN);
@@ -176,71 +180,67 @@ function checkSpace(a) {
 
 // Appends player object into array 
 function update(player) {
-    console.log("pushes object into open space in selected array if there is space") // 
     if (player.list == 0) {
-        let check = checkSpace(sbThurList);
+        let check = checkSpace(storageZero);
         if (check !== false) {
-            sbThurList.splice(check, 1, player);
+            storageZero.splice(check, 1, player);
             print(player, check);
         }
     } else if (player.list == 1) {
-        let check = checkSpace(sbSatList);
+        let check = checkSpace(storageOne);
         if (check !== false) {
-            sbSatList.splice(check, 1, player);
+            storageOne.splice(check, 1, player);
             print(player, check);
         }
     } else if (player.list == 2) {
-        let check = checkSpace(sbSunList);
+        let check = checkSpace(storageTwo);
         if (check !== false) {
-            sbSunList.splice(check, 1, player);
+            storageTwo.splice(check, 1, player);
             print(player, check);
         }
     } else if (player.list == 3) {
-        let check = checkSpace(dbThurList);
+        let check = checkSpace(storageThree);
         if (check !== false) {
-            dbThurList.splice(check, 1, player);
+            storageThree.splice(check, 1, player);
             print(player, check);
         }
     } else if (player.list == 4) {
-        let check = checkSpace(dbFriList);
+        let check = checkSpace(storageFour);
         if (check !== false) {
-            dbFriList.splice(check, 1, player);
+            storageFour.splice(check, 1, player);
             print(player, check);
         }
     }
 }
 
-// Create Form submission
-form.addEventListener("submit", (event) => {
-    console.log("form submitted with all values for object, object created, form display none, body overflow visible") //
-    const name = form.elements["playerName"];
-    const passw = form.elements["pin"];
-    const listNum = form.elements["listNum"];
+// Create sign up Form submission
+signUpForm.addEventListener("submit", (event) => {
+    const name = signUpForm.elements["playerName"];
+    const passw = signUpForm.elements["pin"];
+    const listNum = signUpForm.elements["listNum"];
 
     let playerName = name.value;
     let pin = passw.value;
     let list = listNum.value;
 
     const person = new player(playerName, pin, list);
-    form.style.display = "none";
+    signUpForm.style.display = "none";
     body.style.overflow = "visible";
 
     update(person);
 });
 
-// gathers info for register form
+// Gathers info for sign up form
 function createPlayer(num) {
-    console.log("Join button pushed, form appears, get hidden input listNum and set value with button id (id same as array), body overflow hidden") // 
-    form.style.display = "";
+    signUpForm.style.display = "";
     const list = document.getElementById("getListNum");
     list.value = num;
     body.style.overflow = "hidden";
 }
 
 function closeSignUp() {
-    console.log("cancel button pushed. set form display to none and body overflow to visible") //
-    form.style.display = "none";
+    signUpForm.style.display = "none";
     body.style.overflow = "visible";
 }
 
-///////////////////////////////////////////////////// If register mulitply with the same info. bugged
+///////////////////////////////////////////////////// MOVE THE GODDAMN FKING FORMS 
